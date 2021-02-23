@@ -1,139 +1,90 @@
-// -------------------------------  BEGINNER
-
 /* Opdracht 1 */
-// Schrijf een functie die een naam verwacht en een groet teruggeeft
+// Schrijf een functie die drie parameters verwacht en deze drie getallen bij elkaar optelt en teruggeeft.
 // ---- Verwachte uitkomsten:
-// "Nova" geeft "Hoi Nova!"
-// "Nick" geeft "Hoi Nick!"
+// 3, 4, 5 geeft 12
+// 11, 3, 9 geeft 23
+function multiply(length, height, width) {
+    return length + height + width;
+}
 
-
+outcomeOne = multiply(3,4,5);
+outcomeTwo = multiply(11,3,9)
+console.log(outcomeOne, outcomeTwo)
 
 /* Opdracht 2 */
-// Schrijf een functie die een hoeveelheid minuten verwacht (als een getal) en teruggeeft
-// hoeveel seconden dat zijn.
+// Schrijf een functie die twee strings verwacht en deze aan elkaar geplakt teruggeeft.
+// Je mag hier geen String Object methoden voor gebruiken.
 // ---- Verwachte uitkomsten:
-// 1 geeft 60
-// 3 geeft 180
-// 23 geeft 1840
-
-
+// "abra", "cadabra" geeft "abracadabra"
+function wizard(word1, word2) {
+    return word1 + word2;
+}
+console.log(wizard('abra', 'cadabra'))
 
 /* Opdracht 3 */
-// Schrijf een functie die een cijfer verwacht en teruggeeft of het cijfer groter is
-// dan nul
+// Schrijf een functie die twee parameters verwacht: een woord en een karakter
+// De functie omwikkelt het woord met het karakter en geeft dit terug
 // ---- Verwachte uitkomsten:
-// -3 geeft false
-// 0 geeft false
-// 300 geeft true
+// "bril", "*" geeft "*bril*"
+// "beep", "_" geeft "_beep_"
+// "kaas", "Q" geeft "QkaasQ"
 
-
-
+function wordsAndCaracters (word, caracter) {
+    return caracter + word + caracter;
+}
+const word1 = wordsAndCaracters('bril', '*')
+const word2 = wordsAndCaracters('beep', '_')
+const word3 = wordsAndCaracters('kaas', 'Q')
+console.log(word1, word2, word3)
 /* Opdracht 4 */
-// Schrijf een functie die twee getallen verwacht en teruggeeft of ze, opgetelt, gróter zijn dan 100.
-// ---- Verwachte uitkomsten:
-// 1 en 23 geeft false
-// 8 en 92 geeft false
-// 89 en 14 geeft true
 
-
-
-/* Opdracht 5 */
-// Schrijf een functie die een array van strings verwacht. Hoe lang die array is, weet je niet van tevoren,
-// dus het moet werken voor alle lengtes. Zelfs voor een lengte van 100 (dus niet één voor één uitschrijven!)
-// De functie geeft alle strings aan elkaar geplakt terug. Je mag hier geen array- of string methoden
-// voor gebruiken zoals .concat()
+// Schrijf een functie die een array van strings verwacht. De functie geeft
+// alle strings aan elkaar geplakt terug. Je mag hier geen array- of string methoden
+// voor gebruiken.
 // ---- Verwachte uitkomsten:
 // ["abra", "cadabra"] geeft "abracadabra"
-// ["a", "b", "c", "d", "e"] geeft "abcde"
+// ["a", "b", "c"] geeft "abc"
+function stickTogether (wordArray) {
+    let output = ""
+    for (let i = 0; i < wordArray.length; i++) {
+        output = output + wordArray[i];
+    }
+    return output;
+}
+const words = stickTogether(['a', 'b', 'c']);
+const words2 = stickTogether(['abra', 'cadabra'])
+console.log(words, words2)
 
-
-
-// -------------------------------  INTERMEDIATE
-
-/* Opdracht 6 */
-// Schrijf een functie die een woord verwacht en dit omgedraait teruggeeft. Je kunt dit zowel handmatig
-// als met ingebouwde string- en array methoden doen. Probeer beide manieren uit te werken als je
-// graag wil oefenen!
+/* Opdracht 5 */
+// Schrijf een functie die een array van strings verwacht en een gezamelijke groet teruggeeft
 // ---- Verwachte uitkomsten:
-// "koekje" geeft "ejkeok"
-// "vrienden" geeft "nedneirv"
+// ["Nick, Nova, Mitchel, Arjen"] geeft "Hoi Nick, Nova, Mitchel en Arjen!"
+// ["Nick", "Nova", "Mitchel", "Arjen"] geeft "Hoi Nick, Nova, Mitchel en Arjen!"
+// ["Piet", "Henk"] geeft "Hoi Piet en Henk!"
+// ["A", "B", "C", "D", "E", "F"] geeft "Hoi A, B, C, D, E, en F!"
+// ["A", "B", "C", "D", "E", "F"] geeft "Hoi A, B, C, D, E en F!"
 
+function greeting(stringsArray) {
+    let greeting = "Hoi ";
 
+    for (let i = 0; i < stringsArray.length; i++) {
+        // als dit de laatste entry is, voeg dan het uitroepteken toe
+        if (i === stringsArray.length - 1) {
+            // de return zorgt ervoor dat er niet meer naar de andere if-statements gekeken wordt
+            return greeting = greeting + " en " + stringsArray[i] + "!";
+        }
+        // als de array maar twee namen bevat of we zijn bij de één-na-laatste naam, voeg dan alleen de naam toe
+        if (stringsArray.length === 2 || i === stringsArray.length - 2) {
+            greeting = greeting + stringsArray[i];
+        } else {
+            // in andere alle gevallen voegen we een komma en spatie toe
+            greeting = greeting + stringsArray[i] + ", ";
+        }
+    }
+    return greeting;
+}
 
-/* Opdracht 7 */
-// Schrijf een functie die een woord verwacht checkt of dit woord een palindroom is. Een palindroom is een
-// spiegelwoord: het is hetzelfde zowel vooruit als achterstevoren. Als dit zo is, geeft de functie true terug,
-// zo niet, dan false.
-// ---- Verwachte uitkomsten:
-// "lepel" geeft true
-// "madam" geeft true
-// "vrienden" geeft false
+const greeting1 = greeting(["Piet", "Henk"]);
+const greeting2 = greeting(["A", "B", "C", "D", "E", "F"]);
 
-
-
-/* Opdracht 8 */
-// Schrijf een functie die een string en een letter verwacht. De functie telt hoe vaak die letter voorkomt in
-// de string en geeft dit terug. Je mag hiervoor geen string- of array-methoden gebruiken.
-// ---- Verwachte uitkomsten:
-// "Hans en marietje lopen naar de supermarkt" en "e" geeft 6
-// "Hans is zijn mondkapje vergeten" en "a" geeft 2
-
-
-
-// ------------------------------- ADVANCED (optionele bonusopdrachten)
-
-/* Opdracht 9 */
-// Schrijf een functie genaamd lastEntry die de laatste entry van een array teruggeeft.
-// Als de parameter n wordt meegegeven, worden de laatste n entries van de array teruggegeven.
-// ---- Verwachte uitkomsten:
-// lastEntry([3, 6, 9, 17, 4, 6, 25, 4]) geeft 4
-// lastEntry([46, 65, 34, 204, 190, 89], 3) geeft [204, 190, 89]
-
-
-
-/* Opdracht 10 */
-// Schrijf een functie die een array van getallen verwacht. De functie geeft het hoogste
-// getal in de array terug. Je mag hier geen array-object methoden voor gebruiken zoals .max()
-// ---- Verwachte uitkomsten:
-// [3, 6, 9, 17, 4, 6, 25] geeft 25
-// [46, 65, 34, 204, 190, 89] geeft 204
-
-
-
-/* Opdracht 11 */
-// Schrijf een functie die geen parameters verwacht en de getallen 1 tot 100 print.
-// Voor getallen die deelbaar zijn door 3 print je "Fizz" in plaats van het getal.
-// Voor getallen die deelbaar zijn door 5 print je "Buzz" in plaats van het getal.
-// Voor getallen die zowel deelbaar zijn door 3 als door 5, print je "FizzBuzz".
-// ---- Verwachte uitkomst:
-// 1
-// 2
-// Fizz
-// 4
-// Buzz
-// Fizz
-// 7
-// 8
-// Fizz
-// Buzz
-// 11
-// Fizz
-// 13
-// 14
-// FizzBuzz
-// 16
-// 17
-// Fizz
-// 19
-// Buzz
-// Fizz
-// 22
-// 23
-// Fizz
-// Buzz
-// 26
-// Fizz
-// 28
-// 29
-// FizzBuzz
-// etc.
+console.log(greeting1)
